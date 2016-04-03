@@ -5,9 +5,9 @@ Just my PHP class to operate Poloniex API :)
 PHP & CURL (Only for trade API).
 
 #TODO:
-+~~Public API~~
+*~~Public API~~
 
-+Trading API
+*Trading API
 
 #Status:
 On progress. If you want me to spend more time on this, donations will be helpful.
