@@ -7,6 +7,7 @@ class Poloniex
 
     /**
      * Poloniex constructor.
+     *
      * @param null $key
      * @param null $secret
      */
@@ -34,6 +35,7 @@ class Poloniex
 
     /**
      * @param null $currenyPair
+     *
      * @return array
      */
     public function returnOrderBook($currencyPair = null)
@@ -41,21 +43,24 @@ class Poloniex
         if ($currencyPair === null) {
             $currencyPair = 'all';
         }
-        return $this->queryPublic('returnOrderBook&currencyPair=' . $currencyPair);
+
+        return $this->queryPublic('returnOrderBook&currencyPair='.$currencyPair);
     }
 
     /**
      * @param null $currenyPair
      * @param $start (UNIX TIME)
      * @param $end (UNIX TIME)
+     *
      * @return array
      */
-    public function returnTradeHistory($currencyPair = null, $start, $end)
+    public function returnTradeHistory($currencyPair, $start, $end)
     {
         if ($currencyPair === null) {
             $currencyPair = 'all';
         }
-        return $this->queryPublic('returnOrderBook&currencyPair=' . $currencyPair . '&start=' . $start . '&end=' . $end);
+
+        return $this->queryPublic('returnOrderBook&currencyPair='.$currencyPair.'&start='.$start.'&end='.$end);
     }
 
     /**
@@ -63,28 +68,33 @@ class Poloniex
      * @param $start (UNIX TIME)
      * @param $end (UNIX TIME)
      * @param $period (candlestick period in seconds; valid values are 300, 900, 1800, 7200, 14400, and 86400)
+     *
      * @return array
      */
-    public function returnChartData($currencyPair = null, $start, $end, $period)
+    public function returnChartData($currencyPair, $start, $end, $period)
     {
         if ($currencyPair === null) {
             $currencyPair = 'all';
         }
-        return $this->queryPublic('returnChartData&currencyPair=' . $currencyPair . '&start=' . $start . '&end=' . $end . '&period=' . $period);
+
+        return $this->queryPublic('returnChartData&currencyPair='.$currencyPair.'&start='.$start.'&end='.$end.'&period='.$period);
     }
 
     /**
      * @return array
      */
-    public function returnCurrencies() {
+    public function returnCurrencies()
+    {
         return $this->queryPublic('returnCurrencies');
     }
 
     /**
      * @param $currency (Example: BTC)
+     *
      * @return array
      */
-    public function returnLoanOrders($currency) {
+    public function returnLoanOrders($currency)
+    {
         return $this->queryPublic('returnCurrencies&currency='.$currency);
     }
 
@@ -92,12 +102,13 @@ class Poloniex
 
     /**
      * @param $command
+     *
      * @return array
      */
     private function queryPublic($command)
     {
-        $uri = file_get_contents("https://poloniex.com/public?command=" . $command);
+        $uri = file_get_contents('https://poloniex.com/public?command='.$command);
+
         return json_decode($uri, true);
     }
-
 }
