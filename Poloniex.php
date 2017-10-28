@@ -60,7 +60,7 @@ class Poloniex
             $currencyPair = 'all';
         }
 
-        return $this->queryPublic('returnOrderBook&currencyPair='.$currencyPair.'&start='.$start.'&end='.$end);
+        return $this->queryPublic('returnTradeHistory&currencyPair='.$currencyPair.'&start='.$start.'&end='.$end);
     }
 
     /**
